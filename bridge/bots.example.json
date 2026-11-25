@@ -1,0 +1,19 @@
+{
+  "_comment": "Copy to bots.json (git-ignored) and edit. One entry per Telegram bot; the key is the bot name used everywhere else (launchd job, provider shim, paseo-agent-send.sh). Token: set the env var TELEGRAM_BOT_TOKEN_<NAME>, or give tokenEnv / tokenCommand. Never put the token itself in this file.",
+  "assistant": {
+    "stateDir": "~/.agent-desk/telegram/assistant",
+    "agentIdFile": "~/.agent-desk/agents/assistant.id",
+    "extraArgs": ["--chrome"]
+  },
+  "desk": {
+    "tokenCommand": ["op", "read", "op://Private/desk-telegram-bot/token"],
+    "stateDir": "~/.agent-desk/telegram/desk",
+    "agentIdFile": "~/.agent-desk/agents/desk.id"
+  },
+  "team": {
+    "tokenEnv": "TEAM_BOT_TOKEN",
+    "stateDir": "~/.agent-desk/telegram/team",
+    "agentIdFile": "~/.agent-desk/agents/team.id",
+    "groups": true
+  }
+}

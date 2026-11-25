@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Inbound Telegram poller for one bot. install.sh fills in the placeholders:
+    __LABEL__  e.g. com.example.tg-bridge-assistant
+    __BUN__    absolute path to bun
+    __DIR__    absolute path to this kit's bridge/ folder
+    __BOT__    the bot's key in bots.json
+    __HOME__   your home directory
+    __PATH__   PATH for the job (must reach bun, paseo and python3)
+  If the token comes from an environment variable, add it under
+  EnvironmentVariables here (the file then holds a secret: keep it 0600),
+  or prefer "tokenCommand" in bots.json.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>__LABEL__</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>__BUN__</string>
+    <string>__DIR__/bridge.ts</string>
+    <string>__BOT__</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key><string>__PATH__</string>
+    <key>HOME</key><string>__HOME__</string>
+    <key>LANG</key><string>en_US.UTF-8</string>
+  </dict>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+  <key>ThrottleInterval</key><integer>10</integer>
+  <key>StandardOutPath</key><string>__DIR__/logs/__BOT__.log</string>
+  <key>StandardErrorPath</key><string>__DIR__/logs/__BOT__.log</string>
+</dict>
+</plist>

@@ -1,0 +1,78 @@
+/**
+ * End-to-end build against the real API (needs ANTHROPIC_API_KEY in .env).
+ *
+ * Exercises the exact orchestrator the extension runs, with a fixture/fetch
+ * bridge standing in for chrome.history and chrome.tabs. Verifies: agent +
+ * environment reuse, session lifecycle, custom-tool dispatch, mid-session file
+ * mounting, sandbox grep/read, the written deliverable, and cleanup.
+ *
+ * Run: pnpm agent:run
+ */
+import Anthropic from "@anthropic-ai/sdk";
+import { CHANNELS, runHomepageBuild } from "@homepage/agent-core";
+import { mkdirSync, writeFileSync } from "node:fs";
+import { FileKVStore, OUT_DIR, OUT_PATH, STATE_PATH, nodeBridge } from "./node-bridge";
+
+async function main() {
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) throw new Error("ANTHROPIC_API_KEY is not set (put it in .env)");
+
+  const client = new Anthropic({ apiKey });
+  const store = new FileKVStore(STATE_PATH);
+
+  mkdirSync(OUT_DIR, { recursive: true });
+
+  const started = Date.now();
+  let lastPhase = "";
+
+  const result = await runHomepageBuild({
+    client,
+    bridge: nodeBridge,
+    store,
+    userSystemPrompt: process.env.HOMEPAGE_PROMPT,
+    callbacks: {
+      onPhase: (phase, detail) => {
+        if (phase !== lastPhase) {
+          lastPhase = phase;
+          process.stdout.write(`\n\x1b[36m[${phase}]\x1b[0m${detail ? " " + detail : ""}\n`);
+        }
+      },
+      onText: (text) => process.stdout.write(text),
+      onLog: (line) => process.stdout.write(`\n\x1b[90m  · ${line}\x1b[0m\n`),
+    },
+  });
+
+  const elapsed = ((Date.now() - started) / 1000).toFixed(1);
+  writeFileSync(OUT_PATH, JSON.stringify(result.data, null, 2));
+
+  console.log("\n\n========== RESULT ==========");
+  console.log(`session      : ${result.sessionId}`);
+  console.log(`source       : ${result.source}`);
+  console.log(`items        : ${result.data.items.length}`);
+  for (const w of result.warnings) console.log(`warning      : ${w}`);
+  console.log(`elapsed      : ${elapsed}s`);
+  console.log(`written to   : ${OUT_PATH}`);
+
+  // The data was validated by runHomepageBuild; these check what validation can't force.
+  const { data } = result;
+  const checks: Array<[string, boolean]> = [
+    ...CHANNELS.map((c): [string, boolean] => [`channel "${c.key}" has items`, data.items.some((i) => i.channel === c.key)]),
+    ["has a lead", data.items.some((i) => i.id === data.lead)],
+    ["reports source outcomes", data.sources.length > 0],
+  ];
+
+  console.log("\n========== CONTRACT ==========");
+  let ok = true;
+  for (const [label, pass] of checks) {
+    console.log(`${pass ? "✅" : "❌"} ${label}`);
+    if (!pass) ok = false;
+  }
+  console.log(`\nNext: pnpm agent:verify`);
+
+  process.exit(ok ? 0 : 1);
+}
+
+main().catch((err) => {
+  console.error("\n[run-agent] fatal:", err);
+  process.exit(1);
+});

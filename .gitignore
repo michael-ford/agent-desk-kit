@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+# per-install config and runtime state: never commit
+bridge/bots.json
+bridge/logs/
+**/persona/CLAUDE.md
+*.bak-*

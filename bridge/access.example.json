@@ -1,0 +1,11 @@
+{
+  "dmPolicy": "allowlist",
+  "allowFrom": ["111111111"],
+  "ackReaction": "👀",
+  "replyToMode": "first",
+  "textChunkLimit": 4096,
+  "chunkMode": "newline",
+  "groups": {
+    "-1001234567890": { "requireMention": true, "allowFrom": [] }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "telegram-paseo-bridge",
+  "private": true,
+  "type": "module",
+  "description": "Telegram <-> Paseo agent bridge: inbound poller (bridge.ts) + send-only MCP tools (outbound-mcp.ts).",
+  "scripts": {
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.27.1",
+    "grammy": "1.41.1",
+    "zod": "4.3.6"
+  }
+}

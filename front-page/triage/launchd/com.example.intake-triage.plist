@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Keeps the intake triage app running. Edit every /Users/YOU path, then:
+    cp launchd/com.example.intake-triage.plist ~/Library/LaunchAgents/
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.example.intake-triage.plist
+  Put API keys in your shell or a secrets manager, not in this file, if you can.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.example.intake-triage</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/YOU/front-page-kit/triage/run.sh</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key><string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    <key>INTAKE_VAULT</key><string>/Users/YOU/notes</string>
+    <key>INTAKE_TRIGGER</key><string>/Users/YOU/assistant/scripts/assistant-trigger.sh</string>
+    <key>INTAKE_NEWTAB_ORIGIN</key><string>chrome-extension://YOUR_EXTENSION_ID</string>
+    <key>INTAKE_TZ</key><string>America/Los_Angeles</string>
+  </dict>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+  <key>StandardOutPath</key><string>/tmp/intake-triage.log</string>
+  <key>StandardErrorPath</key><string>/tmp/intake-triage.log</string>
+</dict>
+</plist>

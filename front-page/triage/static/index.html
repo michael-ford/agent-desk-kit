@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Intake</title>
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3ecdf" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1611" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 29V9' stroke='%233f5a44' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M16 20c-4-1-7-4-7-8 4 0 7 3 7 8zM16 15c4-1 7-4 7-8-4 0-7 3-7 8z' fill='%233f5a44'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/styles.css">
+<script>
+  // Set the theme before first paint so the page never flashes the wrong one.
+  (function () {
+    var t = localStorage.getItem("intake.theme");
+    if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+  })();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <mask id="monstera-cuts" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200">
+      <rect width="200" height="200" fill="#fff"/>
+      <g fill="none" stroke="#000" stroke-linecap="round">
+        <path d="M100 178C99 130 98 80 96 28" stroke-width="3.5"/>
+        <path d="M98 150 46 132M98 122 34 96M97 94 40 62M97 66 58 36M99 150 156 130M99 122 166 92M98 94 160 58M97 66 140 34" stroke-width="7"/>
+      </g>
+      <g fill="#000"><ellipse cx="74" cy="120" rx="5" ry="8" transform="rotate(-60 74 120)"/><ellipse cx="128" cy="112" rx="5" ry="8" transform="rotate(60 128 112)"/><ellipse cx="78" cy="84" rx="4" ry="7" transform="rotate(-55 78 84)"/><ellipse cx="122" cy="80" rx="4" ry="7" transform="rotate(55 122 80)"/></g>
+    </mask>
+    <symbol id="monstera" viewBox="0 0 200 200">
+      <path mask="url(#monstera-cuts)" d="M100 186C62 182 26 156 16 116 8 82 26 44 58 26 74 17 88 14 98 16 112 14 128 17 144 26 176 44 194 82 184 116 174 156 138 182 100 186z"/>
+      <rect x="98" y="184" width="4" height="15" rx="2"/>
+    </symbol>
+  </defs>
+</svg>
+<div class="leaf-shadows" aria-hidden="true">
+  <svg class="ls ls-1" viewBox="0 0 200 200"><use href="#monstera"/></svg>
+  <svg class="ls ls-2" viewBox="0 0 200 200"><use href="#monstera"/></svg>
+  <svg class="ls ls-3" viewBox="0 0 200 200"><use href="#monstera"/></svg>
+</div>
+<a class="skip" href="#items">Skip to items</a>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="title-block">
+      <svg class="sprig" viewBox="0 0 40 56" aria-hidden="true">
+        <path d="M20 54 C20 40 21 24 24 4" class="stem"/>
+        <path d="M20.6 44c-6-1-10-5-11-11 6 0 10 5 11 11z"/>
+        <path d="M21 36c6-1.5 9.5-6 10-12-6 .5-9.5 5.5-10 12z"/>
+        <path d="M21.6 27c-5.5-1-9-5-9.6-10.5 5.5 0 9 4.6 9.6 10.5z"/>
+        <path d="M22.4 19c5-1.4 8-5.4 8.2-10.6-5 .6-8 4.8-8.2 10.6z"/>
+        <path d="M23.2 11.5c-4-1-6.4-4-6.6-8 4 .2 6.4 3.6 6.6 8z"/>
+      </svg>
+      <div>
+        <h1 class="title">Intake</h1>
+        <p class="subtitle" id="subtitle">Loading&hellip;</p>
+      </div>
+    </div>
+
+    <div class="masthead-tools">
+      <label class="file-pick">
+        <span class="visually-hidden">Intake page</span>
+        <select id="file-select" aria-label="Intake page"></select>
+      </label>
+      <button type="button" class="icon-btn voice-btn" id="voice-btn" aria-pressed="false" aria-label="Triage by voice" title="Triage by voice (l)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg>
+      </button>
+      <button type="button" class="talk-btn" id="talk-btn" aria-pressed="false" title="Talk it through: a conversation about the whole page (T)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><path d="M17 9h3a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1v3l-4-3h-3"/></svg>
+        <span class="wide-only">Talk it through</span>
+      </button>
+      <div class="segmented" role="group" aria-label="View" id="view-seg">
+        <button type="button" id="view-one" aria-pressed="true" aria-label="One at a time">One<span class="wide-only"> at a time</span></button>
+        <button type="button" id="view-list" aria-pressed="false">Stack</button>
+      </div>
+      <button type="button" class="icon-btn" id="theme-btn" aria-label="Toggle evening lamp light" title="Theme (t)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l3 8H5z"/><path d="M12 11v7M8 21h8"/></svg>
+      </button>
+      <button type="button" class="icon-btn" id="help-btn" aria-label="Keyboard shortcuts" title="Shortcuts (?)">
+        <span aria-hidden="true" class="qmark">?</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="index-rail" aria-label="Projects">
+    <figure class="plant-wrap">
+      <div id="plant" class="plant-host"></div>
+      <figcaption id="plant-caption"></figcaption>
+    </figure>
+    <h2 class="rail-title">Projects</h2>
+    <ul id="project-index" class="project-index"></ul>
+  </aside>
+
+  <main class="desk">
+    <div class="phases" id="phases" role="tablist" aria-label="Phase">
+      <button type="button" role="tab" id="phase-action" aria-selected="true">To act on <span class="n">0</span></button>
+      <button type="button" role="tab" id="phase-awareness" aria-selected="false">Awareness <span class="n">0</span></button>
+    </div>
+    <section class="filters" aria-label="Filters">
+      <div class="chips" role="group" aria-label="Board" id="board-chips"></div>
+      <div class="filter-selects">
+        <label class="field-inline project-field">
+          <span>Project</span>
+          <select id="project-select"></select>
+        </label>
+        <label class="field-inline">
+          <span>Source</span>
+          <select id="source-select"></select>
+        </label>
+        <label class="field-inline" id="group-field">
+          <span>Group</span>
+          <select id="group-select">
+            <option value="project">Project</option>
+            <option value="board">Board</option>
+            <option value="source">Source</option>
+            <option value="age">Age</option>
+            <option value="section">Section</option>
+            <option value="none">None</option>
+          </select>
+        </label>
+      </div>
+      <div class="toggles">
+        <label class="toggle"><input type="checkbox" id="show-snoozed"> <span>Snoozed <span class="count" id="snoozed-count">0</span></span></label>
+        <label class="toggle"><input type="checkbox" id="show-resolved"> <span>Resolved <span class="count" id="resolved-count">0</span></span></label>
+      </div>
+    </section>
+
+    <p class="tally" id="tally" aria-live="polite"></p>
+
+    <div id="items" class="items" tabindex="-1"></div>
+  </main>
+</div>
+
+<div class="toast-shelf" aria-live="polite" aria-atomic="false" id="toasts"></div>
+
+<div class="voicebar" id="voicebar" hidden role="region" aria-label="Voice">
+  <span class="vb-dot" aria-hidden="true"></span>
+  <span class="vb-status" aria-live="polite">Listening</span>
+  <span class="vb-text"><span class="vb-live"></span> <span class="vb-result" aria-live="polite"></span></span>
+  <button type="button" class="btn btn-quiet" id="vb-stop">Stop<kbd>esc</kbd></button>
+</div>
+
+<aside class="talkdock" id="talkdock" hidden aria-label="Talk it through">
+  <div class="tk-side">
+    <button type="button" class="tk-orb" id="tk-orb" aria-pressed="false" aria-label="Start talking">
+      <span class="tk-ring" aria-hidden="true"></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg>
+    </button>
+    <div class="tk-meta">
+      <p class="tk-title">Talk it through</p>
+      <p class="tk-status" id="tk-status" aria-live="polite">Tap to start</p>
+      <div class="tk-tools">
+        <button type="button" class="btn btn-quiet tk-mute" id="tk-mute" aria-pressed="false" hidden>Mute</button>
+        <button type="button" class="btn btn-quiet" id="tk-close">Close</button>
+      </div>
+    </div>
+  </div>
+  <div class="tk-main">
+    <ol class="tk-captions" id="tk-captions" aria-live="polite" aria-label="Conversation"></ol>
+    <div class="tk-confirm" id="tk-confirm" hidden></div>
+  </div>
+  <div class="tk-logwrap">
+    <h3 class="tk-logh">Changes</h3>
+    <ol class="tk-log" id="tk-log"><li class="tk-none">Nothing yet. Everything it changes shows here, with undo.</li></ol>
+  </div>
+</aside>
+
+<dialog id="help" class="sheet" aria-labelledby="help-title">
+  <form method="dialog" class="sheet-inner">
+    <h2 id="help-title">Shortcuts</h2>
+    <dl class="keys">
+      <div><dt><kbd>&larr;</kbd> <kbd>&rarr;</kbd></dt><dd>Previous and next card (one at a time). <kbd>&uarr;</kbd> <kbd>&darr;</kbd> in the stack and the awareness digest. <kbd>j</kbd> back, <kbd>k</kbd> forward</dd></div>
+      <div><dt><kbd>p</kbd></dt><dd>Switch between actions and the awareness digest</dd></div>
+      <div><dt><kbd>l</kbd></dt><dd>Start or stop voice triage. One tap, then talk card to card</dd></div>
+      <div><dt><kbd>1</kbd>&ndash;<kbd>9</kbd></dt><dd>When the item asks a question, pick that answer. It&rsquo;s marked done with your choice. A note typed in the Done box goes with it</dd></div>
+      <div><dt><kbd>d</kbd></dt><dd>Done, with an optional note (<kbd>D</kbd> skips the note)</dd></div>
+      <div><dt><kbd>r</kbd></dt><dd>Reschedule: <kbd>1</kbd> tomorrow, <kbd>2</kbd> Monday, <kbd>3</kbd> next week</dd></div>
+      <div><dt><kbd>c</kbd></dt><dd>Comment for the assistant to read at its next sweep</dd></div>
+      <div><dt><kbd>a</kbd></dt><dd>Ask the assistant a question; its answer appears on the card</dd></div>
+      <div><dt><kbd>x</kbd></dt><dd>Drop, with an optional reason</dd></div>
+      <div><dt><kbd>m</kbd></dt><dd>Hand to the assistant (flagged, and queued in the triage inbox)</dd></div>
+      <div><dt><kbd>Enter</kbd></dt><dd>Save and move to the next item (Ask stays put for the assistant&rsquo;s answer). In the digest, opens and closes a row. <kbd>Esc</kbd> cancels</dd></div>
+      <div><dt><kbd>Space</kbd></dt><dd>Start dictating a comment. In any field: tap to start or stop, or hold to talk</dd></div>
+      <div><dt><kbd>u</kbd></dt><dd>Undo the last action</dd></div>
+      <div><dt><kbd>v</kbd></dt><dd>Switch between one at a time and the stack</dd></div>
+      <div><dt><kbd>s</kbd></dt><dd>Show or hide snoozed items</dd></div>
+      <div><dt><kbd>t</kbd></dt><dd>Daylight or evening lamp light</dd></div>
+      <div><dt><kbd>T</kbd></dt><dd>Talk it through: a spoken conversation about the whole page. Say &ldquo;that&rsquo;s all&rdquo; to finish</dd></div>
+    </dl>
+    <h3 class="sheet-sub">Saying things</h3>
+    <p class="fine says">&ldquo;done&rdquo; &middot; on a question, the answer: &ldquo;yes&rdquo;, &ldquo;keep&rdquo;, &ldquo;option two&rdquo; &middot; &ldquo;drop&rdquo;, &ldquo;drop because it&rsquo;s stale&rdquo; &middot; &ldquo;later&rdquo;, &ldquo;tomorrow&rdquo;, &ldquo;Monday&rdquo;, &ldquo;next week&rdquo;, &ldquo;Nov 3&rdquo; &middot; &ldquo;comment &hellip;&rdquo; &middot; &ldquo;ask &hellip;&rdquo; &middot; &ldquo;tell the assistant &hellip;&rdquo; &middot; &ldquo;next&rdquo;, &ldquo;back&rdquo;, &ldquo;skip&rdquo; &middot; &ldquo;undo&rdquo; &middot; &ldquo;stop&rdquo;</p>
+    <label class="field-inline lang-field">
+      <span>Speech language</span>
+      <select id="lang-select">
+        <option value="en-US">English (Canada)</option>
+        <option value="en-US">English (US)</option>
+      </select>
+    </label>
+    <p class="fine" id="mic-mode"></p>
+    <div class="sheet-actions"><button class="btn btn-quiet" value="close">Close</button></div>
+  </form>
+</dialog>
+
+<template id="icons">
+  <svg id="i-done" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+  <svg id="i-snooze" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>
+  <svg id="i-comment" viewBox="0 0 24 24"><path d="M5 5h14v10H10l-4 4v-4H5z"/></svg>
+  <svg id="i-drop" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg>
+  <svg id="i-assistant" viewBox="0 0 24 24"><path d="M4 12h12M12 7l5 5-5 5"/><path d="M20 5v14"/></svg>
+  <svg id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg>
+  <svg id="i-ask" viewBox="0 0 24 24"><path d="M9.2 9a3 3 0 1 1 4.3 2.7c-.9.5-1.5 1.2-1.5 2.3v.5"/><path d="M12 18.2v.1"/></svg>
+  <svg id="i-prev" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>
+  <svg id="i-next" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+</template>
+
+<script src="/app.js" type="module"></script>
+</body>
+</html>

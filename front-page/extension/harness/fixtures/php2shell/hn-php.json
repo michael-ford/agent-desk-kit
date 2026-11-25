@@ -1,0 +1,196 @@
+{
+ "hits": [
+  {
+   "objectID": "50201259",
+   "title": "Jared Kushner Hacked Phone Reveals Secret Negotiations, Millions in Transactions",
+   "url": "https://www.vanityfair.com/story/jared-kushner-hacked-phone-secret-negotiations",
+   "created_at": "2026-10-22T21:24:41Z",
+   "points": 546,
+   "num_comments": 227
+  },
+  {
+   "objectID": "50199757",
+   "title": "A complete bypass of eMudhra\u2019s 1FA OTP login system",
+   "url": "https://mastodon.catgirl.cloud/@49016/117475976434068995",
+   "created_at": "2026-10-22T19:14:01Z",
+   "points": 189,
+   "num_comments": 66
+  },
+  {
+   "objectID": "50194070",
+   "title": "Amazon identifies Oct 17 PHP2Shell exploitation prior to public disclosure",
+   "url": "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-identifies-php2shell-exploitation-prior-to-public-disclosure-in-madpot/",
+   "created_at": "2026-10-22T11:50:36Z",
+   "points": 270,
+   "num_comments": 98
+  },
+  {
+   "objectID": "50193804",
+   "title": "Several Linux kernel vulnerabilities accidentally posted to public mailing list",
+   "url": "https://www.phoronix.com/news/LKML-New-Trend-Vulnerabilities",
+   "created_at": "2026-10-22T11:12:37Z",
+   "points": 252,
+   "num_comments": 91
+  },
+  {
+   "objectID": "50193416",
+   "title": "Tell HN: I unknowingly broke the PHP RCE embargo. I am sorry",
+   "url": null,
+   "created_at": "2026-10-22T10:11:44Z",
+   "points": 728,
+   "num_comments": 257
+  },
+  {
+   "objectID": "50192536",
+   "title": "Jailbreaking the Switch 2",
+   "url": "https://pepsipu.com/blog/2026-10-switch2-jailbreak-ns2jb/",
+   "created_at": "2026-10-22T08:01:52Z",
+   "points": 826,
+   "num_comments": 304
+  },
+  {
+   "objectID": "50188948",
+   "title": "There isn't an easy exploit for this PHP vulnerability",
+   "url": "https://eliastaylor.com/noexploit/",
+   "created_at": "2026-10-21T23:13:27Z",
+   "points": 630,
+   "num_comments": 469
+  },
+  {
+   "objectID": "50187708",
+   "title": "PHP web runtimes (CVE-2026-109618 and CVE-2026-109619)",
+   "url": "https://aws.amazon.com/security/security-bulletins/2026-143-aws/",
+   "created_at": "2026-10-21T21:12:59Z",
+   "points": 118,
+   "num_comments": 26
+  },
+  {
+   "objectID": "50186450",
+   "title": "Physicists trap a single antimatter particle for a month",
+   "url": "https://www.scientificamerican.com/article/physicists-trap-a-single-antimatter-particle-for-a-month/",
+   "created_at": "2026-10-21T19:40:01Z",
+   "points": 174,
+   "num_comments": 59
+  },
+  {
+   "objectID": "50183892",
+   "title": "Show HN: Omnara \u2013 Open-source alternative to Claude Managed Agents",
+   "url": "https://github.com/omnara-ai/omnara",
+   "created_at": "2026-10-21T16:44:53Z",
+   "points": 112,
+   "num_comments": 34
+  },
+  {
+   "objectID": "50182987",
+   "title": "Today's PHP security release, and how we're strengthening security",
+   "url": "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/",
+   "created_at": "2026-10-21T15:48:56Z",
+   "points": 812,
+   "num_comments": 402
+  },
+  {
+   "objectID": "50181326",
+   "title": "Cloudflare deploys protections against php2shell vulnerability",
+   "url": "https://blog.cloudflare.com/php-vulnerabilities-waf-protection/",
+   "created_at": "2026-10-21T14:11:14Z",
+   "points": 133,
+   "num_comments": 24
+  },
+  {
+   "objectID": "50181114",
+   "title": "Compromised LiteLLM 1.107.0 on PyPI Installs a Credential Stealer and Backdoor",
+   "url": "https://safedep.io/litellm-pypi-compromise-credential-stealer-backdoor/",
+   "created_at": "2026-10-21T14:00:26Z",
+   "points": 595,
+   "num_comments": 196
+  },
+  {
+   "objectID": "50180943",
+   "title": "PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 out",
+   "url": "https://www.php.net/index.php",
+   "created_at": "2026-10-21T13:50:05Z",
+   "points": 279,
+   "num_comments": 2
+  },
+  {
+   "objectID": "50180873",
+   "title": "PHP 8.2.35",
+   "url": "https://github.com/php/php-src/releases/tag/php-8.2.35",
+   "created_at": "2026-10-21T13:45:33Z",
+   "points": 1101,
+   "num_comments": 578
+  },
+  {
+   "objectID": "50180836",
+   "title": "PHP2Shell: AI uncovers critical RCE in PHP",
+   "url": "https://www.wiz.io/blog/php2shell-php-rce",
+   "created_at": "2026-10-21T13:43:19Z",
+   "points": 454,
+   "num_comments": 185
+  },
+  {
+   "objectID": "50179828",
+   "title": "Dutch National Cyber Security Center is Offline because it uses PHP",
+   "url": "https://www.ncsc.nl/actueel",
+   "created_at": "2026-10-21T12:31:28Z",
+   "points": 273,
+   "num_comments": 95
+  },
+  {
+   "objectID": "50176077",
+   "title": "PHP session.upload_progress heap UAF (CVE-2026-109618 / -109619)",
+   "url": "https://jackalsyn.com/posts/php-up-2026.html",
+   "created_at": "2026-10-21T04:26:56Z",
+   "points": 187,
+   "num_comments": 62
+  },
+  {
+   "objectID": "50173891",
+   "title": "The Other Epidemic: Trying to get off benzodiazepines",
+   "url": "https://www.thebeliever.net/the-other-epidemic/",
+   "created_at": "2026-10-20T23:04:09Z",
+   "points": 303,
+   "num_comments": 258
+  },
+  {
+   "objectID": "50172214",
+   "title": "Musk ordered Starlink slowdown that blindsided Ukraine",
+   "url": "https://www.wsj.com/world/ukraine-starlink-elon-musk-trump-dbc49193",
+   "created_at": "2026-10-20T20:29:38Z",
+   "points": 118,
+   "num_comments": 55
+  },
+  {
+   "objectID": "50172041",
+   "title": "Security advisory: Critical remote code execution vulnerabilities, update now",
+   "url": "https://www.php.net/archive/2026.php#2026-10-21-5",
+   "created_at": "2026-10-20T20:15:50Z",
+   "points": 1555,
+   "num_comments": 658
+  },
+  {
+   "objectID": "50171528",
+   "title": "Upcoming Critical PHP Security Release",
+   "url": "https://www.php.net/archive/2026.php",
+   "created_at": "2026-10-20T19:34:03Z",
+   "points": 137,
+   "num_comments": 1
+  },
+  {
+   "objectID": "50167754",
+   "title": "Tell HN: 2x PHP RCE CVEs with CVSS 10.0 Incoming",
+   "url": null,
+   "created_at": "2026-10-20T15:20:35Z",
+   "points": 302,
+   "num_comments": 62
+  },
+  {
+   "objectID": "50167732",
+   "title": "Why do we have so many meetings?",
+   "url": "https://www.nber.org/papers/w35706",
+   "created_at": "2026-10-20T15:19:19Z",
+   "points": 122,
+   "num_comments": 174
+  }
+ ]
+}
